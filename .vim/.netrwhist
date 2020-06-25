@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/jigsaw/workspace/python/ori/v4'
+let g:netrw_dirhist_7='/home/jigsaw/workspace/web/vezbe/miniproj/REST/PocetniREST/src/services'
+let g:netrw_dirhist_6='/home/jigsaw/workspace/web/vezbe/miniproj/HttpWebServer/static'
+let g:netrw_dirhist_5='/home/jigsaw/workspace/web/vezbe/miniproj/HttpWebServer'
+let g:netrw_dirhist_4='/home/jigsaw/workspace/web/vezbe/miniproj'
+let g:netrw_dirhist_3='/home/jigsaw/workspace/web/jelena/httpd'
+let g:netrw_dirhist_2='/home/jigsaw/workspace/web/vezbe/miniproj/HttpWebServer'
+let g:netrw_dirhist_1='/home/jigsaw/workspace/cpp/anjacas/proj'
+let g:netrw_dirhist_0='/home/jigsaw/workspace/cpp/anjacas/priprema'
+let g:netrw_dirhist_9='/home/jigsaw/workspace/cpp/anjacas/priprema/06-Uslovna_sinhronizacija/Resenja/parking_N_mesta'
