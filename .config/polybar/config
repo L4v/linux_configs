@@ -68,7 +68,7 @@ font-5 = FontAwesome5Brands:style=Regular:size=10;1
 
 modules-left = spotify spotify-prev spotify-play-pause spotify-next
 modules-center = i3
-modules-right =  xkeyboard memory cpu battery pulseaudio backlight-acpi date
+modules-right =  xkeyboard memory cpu battery pulseaudio backlight-acpi popup-calendar
 
 tray-position = left
 tray-padding = 5
@@ -366,7 +366,7 @@ adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #00ff00
+format-charging-underline = 
 
 label-discharging = %percentage%%
 format-discharging-prefix = " "
@@ -471,6 +471,12 @@ type = custom/script
 exec = echo ""
 format = <label>
 click-left = playerctl next spotify
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/scripts/popup-calendar.sh
+interval = 5
+click-left = ~/.config/polybar/scripts/popup-calendar.sh --popup &
 
 [settings]
 screenchange-reload = true

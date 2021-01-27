@@ -247,3 +247,8 @@ set $statussig SIGUSR1
 #   List cards: aplay -l
 #set $alsacard 1
 
+# NOTE(Jovan): YAD floating window, for polybar calendar
+for_window [class="Yad" title="yad-calendar"] floating enable
+
+# NOTE(Jovan): Shutdown prompt script
+bindsym $mod+Shift+x    exec ~/.config/i3/scripts/shutdownprompt.sh "Do you want to poweroff?" "poweroff"
