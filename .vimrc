@@ -1,4 +1,13 @@
-
+" Vundle setup
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'tikhomirov/vim-glsl'
+call vundle#end()
+filetype plugin indent on
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -53,7 +62,6 @@ endif
 " Keybindings
 nnoremap <F2> :wa<cr>
 inoremap <F2> <Esc>:wa<cr>gi
-" ALE plugin help generate
 packloadall
 silent! helptags ALL
 " BACKSPACE
@@ -72,3 +80,9 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+" Remove highlight after search when pressing ESC
+nnoremap <esc> :noh \| :pclose <CR><esc>
+" Disable ALE by default
+let g:ale_enabled=0
+" YouCompleteMe populate error list
+let g:ycm_always_populate_location_list = 1
