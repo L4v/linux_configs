@@ -33,7 +33,7 @@ lightblue = #03A9F4
 
 
 [bar/mainbar]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 20
 ;offset-x = 1%
@@ -61,21 +61,23 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Consolas:pixelsize=11:style=Bold;1
-font-1 = Consolas:fontformat=truetype:size=8:antialias=false;0
+;font-0 = Consolas:pixelsize=11:style=Bold;1
+font-0 = SF-Pro Text:pixelsize=11:antialias=true:style=Bold;1
+font-1 = Consolas:fontformat=truetype:size=8:antialias=true;0
 font-2 = Consolas:pixelsize=10;1
-font-3 = FontAwesome5Free:style=Solid:size=10;1
-font-4 = FontAwesome5Free:style=Regular:size=10;1
-font-5 = FontAwesome5Brands:style=Regular:size=10;1
+font-3 = FontAwesome6Free:style=Solid:size=10;1
+font-4 = FontAwesome6Free:style=Regular:size=10;1
+font-5 = FontAwesome6Brands:style=Regular:size=10;1
+font-6 = custom:style=Regular:size=12;1
 
 ;modules-left = spotify spotify-prev spotify-play-pause spotify-next
 modules-center = i3
 modules-right = xkeyboard memory cpu battery pulseaudio backlight-acpi popup-calendar
 
-;tray-reparent = true
-;tray-position = left
-;tray-padding = 5
-;tray-background = ${colors.background}
+tray-reparent = true
+tray-position = left
+tray-padding = 5
+tray-background = ${colors.background}
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -233,7 +235,7 @@ bar-empty-foreground = ${colors.foreground-alt}
 format = <label>
 label =  %percentage%%
 type = internal/backlight
-card = amdgpu_bl0
+card = amdgpu_bl1
 
 [module/cpu]
 type = internal/cpu
@@ -253,16 +255,17 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlo1
+interface = wlan0
 ;net1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 ;format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = ${A1:nm-connection-editor:}%essid%%{A}
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
+;format-disconnected =
+format-disconnected = <label-disconnected>
+label-disconnected = ${A1:nm-connection-editor:}%essid%%{A}
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
@@ -364,8 +367,8 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT1
-adapter = ADP1
+battery = BAT0
+adapter = ADP0
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>

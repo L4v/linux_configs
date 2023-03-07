@@ -13,7 +13,10 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8, FontAwesome 8
+#font pango:monospace 8, FontAwesome 8
+font -apple-sf pro text-*-*-*-*-*-*-*-*-*-*-iso10646-*
+font pango:SF Pro Display 9
+#font pango:monospace 8, "SF Pro Display" 8
 #font Consolas 10
 
 
@@ -22,8 +25,9 @@ font pango:monospace 8, FontAwesome 8
 #exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/lotr/*
 #exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/triumphofdeath.jpg
 #exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/among-trees-4-2-1920x1080.jpg
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/pixelart/*
-exec_always --no-startup-id picom --experimental-backends
+exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/Minimalism/*
+#exec_always --no-startup-id picom --experimental-backends
+exec_always --no-startup-id picom
 #exec --no-startup-id picom --backend glx --experimental-backends -bc
 # polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -41,23 +45,6 @@ hide_edge_borders both
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
 
-# END CUSTOM
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-#exec --no-startup-id nm-applet
-
 # Start volnoti for audio notifications
 exec --no-startup-id volnoti
 # Use pactl to adjust volume in PulseAudio.
@@ -72,17 +59,15 @@ bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && if amixe
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st 
+bindsym $mod+Return exec kitty
+#st 
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+grave exec dmenu_run -fn "-*-consolas-*-r-*-*-*-*-*-*-*-*-*-uni" -nb '#222222' -sf '#eeeeee' -sb '#e84393' -nf '#bbbbbb'
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+grave exec dmenu_run -fn "-*-'SF-Mono'-*-r-*-*-*-*-*-*-*-*-*-uni" -nb '#222222' -sf '#eeeeee' -sb '#e84393' -nf '#bbbbbb'
+bindsym $mod+Escape exec dmenu_run -fn "-*-'SF-Mono'-*-r-*-*-*-*-*-*-*-*-*-uni" -nb '#222222' -sf '#eeeeee' -sb '#e84393' -nf '#bbbbbb'
 
 # change focus
 bindsym $mod+h focus left
@@ -207,15 +192,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-	#position top
-        #status_command i3status
-#}
-
-# rofi bindings
-#bindsym $mod+grave exec "rofi -show run"
 # screenshot
 exec_always --no-startup-id flameshot
 bindsym --release Print exec flameshot gui
@@ -227,12 +203,6 @@ client.focused		#4c7899 #285577 #ffffff #d63031 #e84393
 new_window pixel
 # Review the lines below and append to ~/.config/.i3/config
 
-## Volume control
-
-# Path to volume control, without trailing slash
-#set $volumepath /usr/bin/i3-volume
-
-# Command for the status line (used with -t, requires -u)
 #   ie: i3blocks, i3status
 set $statuscmd i3status
 
@@ -241,17 +211,6 @@ set $statuscmd i3status
 #   i3status uses SIGUSR1 by default
 set $statussig SIGUSR1
 
-# Amount to increase/decrease volume as a percentage (used with -i, -d)
-#set $volumestep 5
-
-# alsa-utils settings
-#
-# To configure a default card, see https://www.alsa-project.org/main/index.php/Asoundrc
-#
-# Card number to control. (used with -a and -c)
-#   If not specified, i3-volume will let `amixer` use a default.
-#   List cards: aplay -l
-#set $alsacard 1
 
 # NOTE(Jovan): YAD floating window, for polybar calendar
 for_window [class="Yad" title="yad-calendar"] floating enable
@@ -263,12 +222,6 @@ bindsym $mod+Shift+x    exec ~/.config/i3/scripts/shutdownprompt.sh "Do you want
 # NOTE(Jovan): Moved polybar to launch at end
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# NOTE(Jovan): Unpair bluetooth
-bindsym $mod+Shift+u exec ~/Scripts/unpair-bt.sh
-
-# NOTE(Jovan): Pair bluetooth
-bindsym $mod+Shift+p exec ~/Scripts/pairrhp-bt.sh
-
 # NOTE(Jovan): https://github.com/justbuchanan/i3scripts
 # for adding icons to workspaces based on contained apps
 exec_always --no-startup-id /usr/bin/i3wsr --config ~/.config/i3wsricons.toml
@@ -276,5 +229,10 @@ exec_always --no-startup-id /usr/bin/i3wsr --config ~/.config/i3wsricons.toml
 # and allow other inputs to pass through)
 #exec_always --no-startup-id imwheel -b 45 -f
 
+# NOTE(Jovan): nm-applet
+exec --no-startup-id nm-applet --sm-disable
+
 # NOTE(Jovan): Gap size
 gaps inner 4
+
+#bindsym Caps_Lock exec $HOME/.scripts/capslock.sh  
