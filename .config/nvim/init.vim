@@ -10,6 +10,8 @@ call vundle#end()
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dyng/ctrlsf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -72,8 +74,6 @@ silent! helptags ALL
 " BACKSPACE
 set nocompatible
 set backspace=indent,eol,start
-" Pathogen
-execute pathogen#infect()
 filetype plugin indent on
 " gruvbox theme
 "colorscheme gruvbox
@@ -83,9 +83,9 @@ set background=dark
 "hi Normal guibg=NONE ctermbg=NONE
 " Indentation
 filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
+set shiftwidth=2 smarttab
 set expandtab
+set tabstop=8 softtabstop=0
 " Remove highlight after search when pressing ESC
 nnoremap <esc> :noh \| :pclose <CR><esc>
 " Disable ALE by default
@@ -112,3 +112,14 @@ function! CheckBackspace() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" NOTE(Jovan): CTRL SHIFT F
+nmap <C-F>f <Plug>CtrlSFPrompt
+nmap <C-F>n <Plug>CtrlSFCwordPath
+nmap <C-F>p <Plug>CtrlSFPwordPath
+
+" NOTE(Jovan): CTRL P
+" Hide gitignore files
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" Show dotfiles
+let g:ctrlp_show_hidden = 1
